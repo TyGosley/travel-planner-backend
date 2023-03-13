@@ -12,6 +12,13 @@ Traveller.belongsToMany(Location, {
   as: 'planned_trips'
 });
 
-// TODO: define the Location table's relationship to Traveller
+// ✅ define the Location table's relationship to Traveller
+Location.belongsToMany(Traveller, {
+  through: {
+    model: Trip,
+    unique: false
+  },
+  as: 'location_travellers'
+})
 
 module.exports = { Traveller, Location, Trip };

@@ -1,4 +1,6 @@
-// TODO: import required dependencies for the model file!
+// ✅ import required dependencies for the model file!
+const { Model, DataTypes} = require('sequelize');
+const sequelize = require('../config/connection');
 
 // create our Trip model
 class Trip extends Model { }
@@ -29,7 +31,15 @@ Trip.init(
         unique: false
       }
     },
-    // TODO: create a connection to the `location` table
+    // ✅create a connection to the `location` table
+    location_id: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: 'location',
+        key: 'id',
+        unique: false
+      }
+    }
   },
   {
     sequelize,
